@@ -4,16 +4,18 @@ import re
 from datetime import date, datetime
 from decimal import Decimal
 
-# The date formats we accept, tried in this order.
-DATE_FORMATS = ("%m/%d/%Y", "%Y-%m-%d", "%d %b %Y")  # 01/18/2025, 2025-01-18, 18 Jan 2025
+# Date formats used by US banks: 01/18/2025, 2025-01-18, 18 Jan 2025.
+# Each bank layout says which formats it uses (see layouts.py). A layout never lists
+# both 01/02 orders (month/day and day/month), so a date can't be read the wrong way round.
+US_DATE_FORMATS = ("%m/%d/%Y", "%Y-%m-%d", "%d %b %Y")
 
 # Digits with up to 2 decimals, e.g. "1234" or "1234.50".
 MONEY = re.compile(r"\d+(\.\d{1,2})?")
 
 
-def parse_date(text: str) -> date:
+def parse_date(text: str, formats: tuple[str, ...] = US_DATE_FORMATS) -> date:
     value = " ".join(text.split())
-    for date_format in DATE_FORMATS:
+    for date_format in formats:
         try:
             return datetime.strptime(value, date_format).date()
         except ValueError:

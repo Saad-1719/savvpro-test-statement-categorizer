@@ -123,3 +123,18 @@ def test_shop_named_total_is_not_a_footer() -> None:
     txs, summary, _ = parse(HEADER + "01/03/2025,TOTAL WINE & MORE,-20.00,1\n01/04/2025,X,-1,1\n")
     assert len(txs) == 2
     assert summary.footer_rows == 0
+
+
+def test_date_order_comes_from_the_layout() -> None:
+    """01/02/2025 is 2 January for a US bank and 1 February for a day-first bank."""
+    assert parse_date("01/02/2025") == date(2025, 1, 2)
+    assert parse_date("01/02/2025", ("%d/%m/%Y",)) == date(2025, 2, 1)
+
+
+def test_every_layout_uses_one_day_month_order() -> None:
+    from app.ingest.layouts import LAYOUTS
+
+    for layout in LAYOUTS:
+        month_first = "%m/%d/%Y" in layout.date_formats
+        day_first = "%d/%m/%Y" in layout.date_formats
+        assert not (month_first and day_first), layout.name

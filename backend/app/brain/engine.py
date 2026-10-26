@@ -30,7 +30,13 @@ def categorize_one(tx: Transaction, rules: RuleSet, user_rules: list[UserRule]) 
 
     # Rows flagged while reading the file are not counted at all.
     if "duplicate" in tx.flags:
-        return flagged(tx, key.key, "duplicate", "Duplicate of an earlier row; counted once")
+        return flagged(
+            tx,
+            key.key,
+            "duplicate",
+            "Same date, description and amount as an earlier row; counted once. "
+            "Pick a category if it was a real second purchase.",
+        )
     if "outside_tax_year" in tx.flags:
         return flagged(tx, key.key, "outside_tax_year", "Date is outside the tax year; not counted")
 

@@ -7,7 +7,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from decimal import Decimal
 
-from app.ingest.amounts import parse_amount
+from app.ingest.amounts import US_DATE_FORMATS, parse_amount
 
 
 @dataclass(frozen=True)
@@ -18,6 +18,7 @@ class Layout:
     date_column: str
     description_column: str
     amount: Callable[[dict[str, str]], Decimal]  # signed: negative = money out
+    date_formats: tuple[str, ...] = US_DATE_FORMATS  # tried in order; see amounts.py
     category_column: str | None = None
 
 

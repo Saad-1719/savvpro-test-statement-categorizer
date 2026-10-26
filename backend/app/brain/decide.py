@@ -80,6 +80,15 @@ def decide(
         refund_rule = find_refund_rule(tx, key, rules)
         if refund_rule:
             reason = f"Money back from {refund_rule.pattern}, reduces {refund_rule.category}"
+            all_evidence.append(
+                Evidence(
+                    layer=refund_rule.layer,
+                    rule_id=refund_rule.id,
+                    category=refund_rule.category,
+                    strength=refund_rule.strength,
+                    reason=reason,
+                )
+            )
             return auto("Refund", reason, refund_rule.id, refund_of=refund_rule.category)
         if key.refund_marker:
             return review("Refund from an unknown merchant")

@@ -9,7 +9,7 @@ from app.ingest.parser import parse_statement
 from app.models import UserRule
 from app.reports.totals import build_summary
 from app.rules.loader import default_rules
-from app.services import add_user_rule, create_session
+from app.services import ServiceError, add_user_rule, create_session, update_transaction
 from tests.conftest import run
 
 HEADER = "Date,Description,Amount,Balance\n"
@@ -174,3 +174,26 @@ def test_e20_always_rule_updates_now_and_future_uploads() -> None:
     )
     (decision,) = later.decisions.values()
     assert (decision.category, decision.rule_id) == ("Personal", rule.id)
+
+
+def test_e4_refund_shows_its_evidence() -> None:
+    d = run("SHELL OIL REFUND", "20.00")
+    assert [(e.rule_id, e.category) for e in d.evidence] == [("merchant.shell", "Fuel")]
+
+
+def test_e15_a_kept_duplicate_counts() -> None:
+    """The user says the second coffee was real: it is counted after all."""
+    row = "01/18/2025,JOES CAFE 9921,-8.75,1\n"
+    session = create_session([("d.csv", (HEADER + row + row).encode())], None)
+    duplicate = next(t for t in session.transactions if "duplicate" in t.flags)
+    update_transaction(session, duplicate.id, "Personal", None)
+    assert session.decisions[duplicate.id].status == "auto"
+
+
+def test_e18_row_outside_tax_year_cannot_be_counted() -> None:
+    text = HEADER + "12/28/2024,SHELL OIL,-42.10,1\n01/04/2025,SHELL OIL,-48.15,1\n"
+    session = create_session([("y.csv", text.encode())], None)
+    old = next(t for t in session.transactions if t.date.year == 2024)
+    with pytest.raises(ServiceError) as err:
+        update_transaction(session, old.id, "Fuel", None)
+    assert err.value.code == "outside_tax_year"

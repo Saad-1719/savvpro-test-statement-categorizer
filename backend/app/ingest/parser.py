@@ -146,7 +146,7 @@ def parse_line(
         raise ValueError("Missing description")
 
     try:
-        tx_date = parse_date(row[layout.date_column])
+        tx_date = parse_date(row[layout.date_column], layout.date_formats)
     except ValueError as problem:
         raise ValueError(f"Bad date: {problem}") from problem
 
