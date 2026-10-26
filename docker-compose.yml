@@ -1,0 +1,21 @@
+# Run the whole app: docker compose up --build   (or: make up)
+# Then open http://localhost:3000. No secrets or .env file are needed.
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      FRONTEND_ORIGIN: http://localhost:3000
+
+  frontend:
+    build:
+      context: . # repo root: the build copies ../sample_data for the "Try sample" buttons
+      dockerfile: frontend/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000 # the browser calls the API on the host
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy

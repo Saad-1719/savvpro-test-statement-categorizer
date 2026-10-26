@@ -1,0 +1,25 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Never commit real statements or uploads
+*.real.csv
+uploads/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
