@@ -6,6 +6,7 @@ import io
 import pytest
 from fastapi.testclient import TestClient
 
+from app.config import settings
 from app.main import app
 from tests.conftest import SAMPLE_DIR
 
@@ -104,7 +105,7 @@ def test_upload_errors_have_one_shape(name, data, status, code) -> None:
 
 
 def test_file_too_large(monkeypatch) -> None:
-    monkeypatch.setattr("app.api.routes.MAX_UPLOAD_BYTES", 10)
+    monkeypatch.setattr(settings, "max_upload_mb", 0.00001)  # about 10 bytes
     response = upload("x.csv", b"Date,Description,Amount,Balance\n")
     assert response.status_code == 413
     assert response.json()["error"]["code"] == "file_too_large"
@@ -149,3 +150,68 @@ def test_summary_groups_totals_by_tax_form_line(session_id: str) -> None:
     car = [t for t in summary["totals"] if t["tax_line"] == "9" and t["deductible_amount"]]
     car_total = sum(float(t["deductible_amount"]) for t in car)
     assert float(lines["9"]["amount"]) == pytest.approx(car_total)
+
+
+def review_ids(session_id: str) -> list[str]:
+    rows = client.get(f"/api/sessions/{session_id}/transactions", params={"status": "review"})
+    return [r["id"] for r in rows.json()]
+
+
+def test_bulk_patch_changes_every_row_in_order(session_id: str) -> None:
+    ids = review_ids(session_id)[:3]
+    response = client.patch(
+        f"/api/sessions/{session_id}/transactions",
+        json={"transaction_ids": ids, "category": "Personal"},
+    )
+    assert response.status_code == 200
+    rows = response.json()
+    assert [r["id"] for r in rows] == ids
+    assert all(r["decision"]["decided_by"] == "user" for r in rows)
+    assert all(r["decision"]["rule_id"] == "user.manual" for r in rows)
+
+
+def test_bulk_patch_is_all_or_nothing(session_id: str) -> None:
+    ids = review_ids(session_id)[:2]
+    response = client.patch(
+        f"/api/sessions/{session_id}/transactions",
+        json={"transaction_ids": [*ids, "no-such-id"], "category": "Personal"},
+    )
+    assert response.status_code == 404
+    assert response.json()["error"]["details"]["missing"] == ["no-such-id"]
+    assert review_ids(session_id)[:2] == ids  # nothing was changed
+
+
+def test_bulk_patch_checks_business_pct_against_the_new_category(session_id: str) -> None:
+    ids = review_ids(session_id)[:2]
+    base = f"/api/sessions/{session_id}/transactions"
+    ok = client.patch(
+        base, json={"transaction_ids": ids, "category": "Phone & Data", "business_pct": 40}
+    )
+    assert [r["decision"]["business_pct"] for r in ok.json()] == [40, 40]
+
+    bad = client.patch(base, json={"transaction_ids": ids, "business_pct": 140})
+    assert bad.json()["error"]["code"] == "invalid_business_pct"
+
+
+@pytest.mark.parametrize(
+    "body",
+    [{"transaction_ids": [], "category": "Personal"}, {"transaction_ids": ["x"]}],
+)
+def test_bulk_patch_rejects_empty_requests(session_id: str, body: dict) -> None:
+    response = client.patch(f"/api/sessions/{session_id}/transactions", json=body)
+    assert response.status_code == 422
+    assert response.json()["error"]["code"] == "invalid_request"
+
+
+def test_unexpected_error_is_logged_not_leaked(monkeypatch) -> None:
+    def broken(*args, **kwargs):
+        raise RuntimeError("secret internals")
+
+    monkeypatch.setattr("app.api.routes.group_review_rows", broken)
+    data = (SAMPLE_DIR / "first_federal_checking_2025.csv").read_bytes()
+    session = upload("s.csv", data).json()["session_id"]
+    quiet_client = TestClient(app, raise_server_exceptions=False)
+    response = quiet_client.get(f"/api/sessions/{session}/review")
+    assert response.status_code == 500
+    assert response.json()["error"]["code"] == "internal_error"
+    assert "secret" not in response.text

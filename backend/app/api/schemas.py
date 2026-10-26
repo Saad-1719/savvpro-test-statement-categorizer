@@ -1,13 +1,18 @@
 """Request bodies and response shaping for the API."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from app.models import Decision, Transaction
 
 
+# business_pct is range-checked in the service, so the API answers `invalid_business_pct`.
 class TransactionPatch(BaseModel):
     category: str | None = None
-    business_pct: int | None = Field(default=None, ge=0, le=100)
+    business_pct: int | None = None
+
+
+class BulkTransactionPatch(TransactionPatch):
+    transaction_ids: list[str]
 
 
 class RuleCreate(BaseModel):

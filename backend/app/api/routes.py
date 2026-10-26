@@ -8,23 +8,23 @@ from fastapi import APIRouter, File, Form, UploadFile
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import Response
 
-from app.api.schemas import RuleCreate, TransactionPatch, row
+from app.api.schemas import BulkTransactionPatch, RuleCreate, TransactionPatch, row
+from app.config import settings
+from app.errors import ServiceError
 from app.ingest.pdf_reader import is_pdf
 from app.reports.export import export_csv
 from app.reports.review_groups import group_review_rows
 from app.reports.totals import build_summary
 from app.rules.loader import default_rules
 from app.services import (
-    ServiceError,
     add_user_rule,
     create_session,
-    store,
+    sessions,
     update_transaction,
+    update_transactions,
 )
 
 router = APIRouter(prefix="/api")
-
-MAX_UPLOAD_BYTES = int(float(os.getenv("MAX_UPLOAD_MB", "5")) * 1024 * 1024)
 
 
 @router.get("/health")
@@ -45,10 +45,10 @@ async def _read_upload(upload: UploadFile) -> tuple[str, bytes]:
     if not is_csv_name and not is_pdf_name:
         raise ServiceError("unsupported_file", f"{name}: only .csv and .pdf files are supported.")
 
-    data = await upload.read(MAX_UPLOAD_BYTES + 1)
-    if len(data) > MAX_UPLOAD_BYTES:
+    data = await upload.read(settings.max_upload_bytes + 1)
+    if len(data) > settings.max_upload_bytes:
         raise ServiceError(
-            "file_too_large", f"{name} is larger than {MAX_UPLOAD_BYTES // 1024 // 1024} MB.", 413
+            "file_too_large", f"{name} is larger than {settings.max_upload_mb:g} MB.", 413
         )
     if not data.strip():
         raise ServiceError("empty_file", f"{name} is empty.")
@@ -86,7 +86,7 @@ async def upload(
 def transactions(
     session_id: str, status: str | None = None, category: str | None = None, q: str | None = None
 ) -> list[dict]:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     needle = q.upper().strip() if q else None
     result = []
     for tx in session.transactions:
@@ -103,27 +103,38 @@ def transactions(
 
 @router.get("/sessions/{session_id}/review")
 def review_groups(session_id: str) -> list[dict]:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     return group_review_rows(session.transactions, session.decisions)
+
+
+@router.patch("/sessions/{session_id}/transactions")
+def patch_transactions(session_id: str, body: BulkTransactionPatch) -> list[dict]:
+    """Change several rows at once (e.g. a whole review group). All of them, or none."""
+    session = sessions.get(session_id)
+    decisions = update_transactions(session, body.transaction_ids, body.category, body.business_pct)
+    return [
+        row(session.by_id[tx_id], decision)
+        for tx_id, decision in zip(body.transaction_ids, decisions, strict=True)
+    ]
 
 
 @router.patch("/sessions/{session_id}/transactions/{tx_id}")
 def patch_transaction(session_id: str, tx_id: str, body: TransactionPatch) -> dict:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     decision = update_transaction(session, tx_id, body.category, body.business_pct)
     return row(session.by_id[tx_id], decision)
 
 
 @router.post("/sessions/{session_id}/rules", status_code=201)
 def create_rule(session_id: str, body: RuleCreate) -> dict:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     rule, updated = add_user_rule(session, body.merchant_key, body.category, body.apply_to_existing)
     return {"rule": rule.model_dump(), "updated_count": updated}
 
 
 @router.get("/sessions/{session_id}/summary")
 def summary(session_id: str) -> dict:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     rules = default_rules()
     data = build_summary(session.transactions, session.decisions, rules.categories)
     data["tax_year"] = session.tax_year
@@ -134,7 +145,7 @@ def summary(session_id: str) -> dict:
 
 @router.get("/sessions/{session_id}/export.csv")
 def export(session_id: str) -> Response:
-    session = store.get(session_id)
+    session = sessions.get(session_id)
     return Response(
         content=export_csv(session.transactions, session.decisions),
         media_type="text/csv",

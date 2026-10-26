@@ -8,7 +8,7 @@ import pytest
 from app.brain.engine import categorize_one
 from app.models import Decision, Transaction, UserRule
 from app.rules.loader import default_rules
-from app.services import store
+from app.services import user_rules
 
 SAMPLE_DIR = Path(__file__).resolve().parents[2] / "sample_data"
 
@@ -16,9 +16,9 @@ SAMPLE_DIR = Path(__file__).resolve().parents[2] / "sample_data"
 @pytest.fixture(autouse=True)
 def _clean_user_rules():
     """User rules are app-wide state; keep tests independent."""
-    store.user_rules = []
+    user_rules.clear()
     yield
-    store.user_rules = []
+    user_rules.clear()
 
 
 def make_tx(
