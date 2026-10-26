@@ -1,0 +1,7 @@
+# The tax form that categories.yaml's `tax_line` numbers refer to.
+# The code never names a form; to target another country, change this file and the tax_line values.
+name: "IRS Schedule C (Form 1040), Profit or Loss From Business"
+note: >-
+  Informational only: your category totals grouped by tax-form line, ready for your
+  accountant. Not tax advice. Assumes the actual-expense method for the car; with the
+  standard mileage rate, fuel and repairs are not separately deductible.

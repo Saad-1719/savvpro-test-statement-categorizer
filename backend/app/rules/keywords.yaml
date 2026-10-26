@@ -1,0 +1,16 @@
+# Layer 3: keywords, matched as whole words in the merchant key.
+# Strong only where the words leave no doubt; medium ones can only suggest (strict policy).
+- {id: keyword.car_wash, match: contains, pattern: "CAR WASH", category: Vehicle Maintenance, strength: strong, sign: debit}
+- {id: keyword.oil_change, match: contains, pattern: "OIL CHANGE", category: Vehicle Maintenance, strength: strong, sign: debit}
+- {id: keyword.auto_repair, match: contains, pattern: "AUTO REPAIR", category: Vehicle Maintenance, strength: strong, sign: debit}
+- {id: keyword.auto_parts, match: contains, pattern: "AUTO PARTS", category: Vehicle Maintenance, strength: strong, sign: debit}
+- {id: keyword.parking, match: contains, pattern: "PARKING", category: Tolls & Parking, strength: strong, sign: debit}
+- {id: keyword.toll, match: contains, pattern: "TOLL", category: Tolls & Parking, strength: strong, sign: debit}
+- {id: keyword.tolls, match: contains, pattern: "TOLLS", category: Tolls & Parking, strength: strong, sign: debit}
+- {id: keyword.tire, match: contains, pattern: "TIRE", category: Vehicle Maintenance, strength: medium, sign: debit}
+- {id: keyword.fuel, match: contains, pattern: "FUEL", category: Fuel, strength: medium, sign: debit}
+- {id: keyword.gas, match: contains, pattern: "GAS", category: Fuel, strength: medium, sign: debit}
+- {id: keyword.phone_mount, match: contains, pattern: "PHONE MOUNT", category: Supplies, strength: medium, sign: debit}
+- {id: keyword.charger, match: contains, pattern: "CHARGER", category: Supplies, strength: medium, sign: debit}
+- {id: keyword.insulated_bag, match: contains, pattern: "INSULATED BAG", category: Supplies, strength: medium, sign: debit}
+- {id: keyword.wireless, match: contains, pattern: "WIRELESS", category: Phone & Data, strength: medium, sign: debit}

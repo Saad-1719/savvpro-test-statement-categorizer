@@ -1,0 +1,47 @@
+[project]
+name = "statement-categorizer"
+version = "0.1.0"
+description = "Rule-based categorizer for rideshare and delivery driver statements"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "pdfplumber>=0.11",
+    "pydantic>=2.8",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6.0",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8.3",
+    "reportlab>=4.0",  # only to build fake PDF statements for tests and samples
+    "ruff==0.17.2",  # pinned so CI lints exactly like local
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*", "eval*"]
+
+[tool.setuptools.package-data]
+"app.rules" = ["*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = [
+    "SIM905",  # "A B C".split() reads better than a long list literal
+    "SIM108",  # plain if/else is easier to read than a one-line ternary
+]

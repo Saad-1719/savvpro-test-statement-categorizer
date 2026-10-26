@@ -1,0 +1,13 @@
+# Merchants that sell both business and personal goods. Always Needs Review
+# unless the user saves a rule for them. Matched as a prefix of the merchant key.
+- WALMART
+- WAL-MART
+- AMAZON
+- AMZN
+- COSTCO
+- TARGET
+- SAMS CLUB
+- BEST BUY
+- 7-ELEVEN
+- CVS
+- WALGREENS

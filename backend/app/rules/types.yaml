@@ -1,0 +1,38 @@
+# Layer 0: transaction types. Matched against the full normalized description.
+# Transfer and Card Payment are excluded from totals; Bank Fees are Auto.
+- id: type.transfer_own_account
+  match: regex
+  pattern: "\\bTRANSFER (TO|FROM) (SAVINGS|CHECKING)\\b"
+  category: Transfer
+- id: type.online_transfer
+  match: regex
+  pattern: "^ONLINE TRANSFER\\b"
+  category: Transfer
+- id: type.card_payment_thank_you
+  match: regex
+  pattern: "\\bPAYMENT\\s*-?\\s*THANK YOU\\b"
+  category: Card Payment
+- id: type.autopay
+  match: regex
+  pattern: "\\bAUTOPAY\\b"
+  category: Card Payment
+- id: type.credit_card_payment
+  match: regex
+  pattern: "\\bCREDIT CARD (PAYMENT|PMT)\\b"
+  category: Card Payment
+- id: type.foreign_transaction_fee
+  match: regex
+  pattern: "\\bFOREIGN (TRANSACTION|TRANS|TXN) FEE\\b"
+  category: Bank Fees
+- id: type.monthly_service_fee
+  match: regex
+  pattern: "\\b(MONTHLY|MAINTENANCE) (SERVICE )?FEE\\b"
+  category: Bank Fees
+- id: type.atm_fee
+  match: regex
+  pattern: "\\bATM (FEE|SURCHARGE)\\b"
+  category: Bank Fees
+- id: type.overdraft_fee
+  match: regex
+  pattern: "\\bOVERDRAFT (FEE|CHARGE)\\b"
+  category: Bank Fees

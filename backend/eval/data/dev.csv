@@ -1,0 +1,352 @@
+date,description,amount,expected_status,expected_category,case
+2025-06-26,SUNOCO 76251 NY,-51.25,auto,Fuel,fuel
+2025-07-04,uber quest bonus,79.9,auto,Tips & Bonuses,tips
+2025-03-17,bp #194 wa,-60.33,auto,Fuel,fuel
+2025-12-02,UBER *TRIP #77971 IL,-7.47,auto,Personal,personal
+2025-10-28,KROGER FUEL CENTER 90150,-56.01,review,,trap_conflict
+2025-03-30,speedway #75511 fl,-24.64,auto,Fuel,fuel
+2025-10-26,monthly  service fee,-1.27,auto,Bank Fees,bank_fee
+2025-02-07,sunoco #14218 ny,-42.66,auto,Fuel,fuel
+2025-03-12,O REILLY AUTO PARTS #63795,-52.65,auto,Vehicle Maintenance,maintenance
+2025-11-18,sunoco,-51.18,auto,Fuel,fuel
+2025-08-08,UBER INSTANT PAY FEE,-1.35,auto,Platform Fees,platform_fee
+2025-05-08,sq *sunset car wash,-28.56,auto,Vehicle Maintenance,car_wash
+2025-02-02,UBER QUEST BONUS,23.63,auto,Tips & Bonuses,tips
+2025-03-28,LYFT EXPRESS PAY FEE,-1.0,auto,Platform Fees,platform_fee
+2025-05-07,QUICK  GAS N GO #3480,-83.17,review,,trap_weak
+2025-12-08,ZELLE FROM SAM,46.19,review,,trap_unknown_credit
+2025-11-26,BPX  CONSULTING,-18.43,review,,trap_lookalike
+2025-12-31,GEICO AUTO,-172.51,auto,Vehicle Insurance,insurance
+2025-11-02,RIVERSIDE BARBER,-34.25,review,,trap_unknown
+2025-08-18,UBER *PENDING,-12.29,review,,trap_uber
+2025-04-29,LUCKY BARBER IL,-34.96,review,,trap_unknown
+2025-09-15,LYFT INC EARNINGS,852.44,auto,Platform Income,payout
+2025-01-07,WALMART SUPERCENTER #90055,-176.48,review,,trap_deny
+2025-12-28,uber *pending,-19.72,review,,trap_uber
+2025-08-25,shell oil #89047 fl,-130.86,review,,trap_big_gas
+2025-01-09,kroger  #88377 ca,-106.09,auto,Personal,personal
+2025-01-26,DOWNTOWN CAFE #56931,-59.81,review,,trap_unknown
+2025-04-30,SAFEWAY FUEL 62946 IL,-35.0,review,,trap_conflict
+2025-03-28,joes  cafe 45878 tx,-28.69,review,,trap_unknown
+2025-08-03,UBER TIPS PAYOUT,97.22,auto,Tips & Bonuses,tips
+2025-11-04,COSTCO  WHSE #432,-60.15,review,,trap_deny
+2025-03-26,city of austin parking 54826,-6.09,auto,Tolls & Parking,tolls
+2025-05-19,TRANSFER FROM SAVINGS,-426.63,excluded,Transfer,transfer
+2025-07-09,UBER TECHNOLOGIES PAYOUT,990.64,auto,Platform Income,payout
+2025-05-10,bpx consulting,-73.0,review,,trap_lookalike
+2025-09-13,UBER  TECHNOLOGIES PAYOUT,334.42,auto,Platform Income,payout
+2025-05-28,fastrak  #35484,-15.61,auto,Tolls & Parking,tolls
+2025-12-11,SQ *LUCKY CAR WASH,-18.83,auto,Vehicle Maintenance,car_wash
+2025-01-17,lucky  diner #45271 ca,-32.71,review,,trap_unknown
+2025-02-19,AT&T  *BILL PAYMENT,-47.56,auto,Phone & Data,phone
+2025-10-31,valero,-75.8,auto,Fuel,fuel
+2025-12-11,CASH APP,124.75,review,,trap_unknown_credit
+2025-11-21,MOBILE  DEPOSIT,315.08,review,,trap_unknown_credit
+2025-08-26,e-zpass replenish #52805,-32.05,auto,Tolls & Parking,tolls
+2025-05-30,LYFT DRIVER PAYOUT,1386.31,auto,Platform Income,payout
+2025-11-26,GEICO AUTO,-117.08,auto,Vehicle Insurance,insurance
+2025-06-05,UBER TIPS PAYOUT,32.59,auto,Tips & Bonuses,tips
+2025-08-27,SQ *SUNSET CAR WASH,-12.29,auto,Vehicle Maintenance,car_wash
+2025-09-28,CIRCLE K #96723 CA,-18.78,auto,Fuel,fuel
+2025-04-08,VALERO 17388 NY,-43.96,auto,Fuel,fuel
+2025-09-27,PEP BOYS,-60.61,auto,Vehicle Maintenance,maintenance
+2025-09-04,VERIZON WRLS,-80.59,auto,Phone & Data,phone
+2025-09-07,STATE FARM INSURANCE,-141.51,auto,Vehicle Insurance,insurance
+2025-09-07,STATE FARM INSURANCE,-141.51,excluded,,trap_duplicate
+2025-06-12,EXXONMOBIL #60606 FL,-129.25,review,,trap_big_gas
+2025-09-09,progressive ins,-156.37,auto,Vehicle Insurance,insurance
+2025-12-23,PAYPAL  *ZZ881,-67.06,review,,trap_paypal
+2025-01-26,ATM FEE,-4.11,auto,Bank Fees,bank_fee
+2025-10-25,EXXONMOBIL 58547,-31.24,auto,Fuel,fuel
+2025-12-03,LYFT DRIVER PAYOUT,921.9,auto,Platform Income,payout
+2025-07-05,UBER TECHNOLOGIES PAYOUT,918.31,auto,Platform Income,payout
+2025-03-13,UBER  TIPS PAYOUT,76.64,auto,Tips & Bonuses,tips
+2025-01-17,UBER *TRIP,-17.92,auto,Personal,personal
+2025-06-09,LUCKY BARBER #38703 CA,-19.84,review,,trap_unknown
+2025-05-24,valero 82319,-51.01,auto,Fuel,fuel
+2025-05-06,PARKMOBILE TX,-8.63,auto,Tolls & Parking,tolls
+2025-11-03,circle k,-63.68,auto,Fuel,fuel
+2025-05-12,BP,-87.13,auto,Fuel,fuel
+2025-05-30,uber bv,-19.38,review,,trap_uber
+2025-10-13,ARCO #97250,-25.83,auto,Fuel,fuel
+2025-02-12,phone charger kiosk #13353,-53.64,review,,trap_weak
+2025-07-27,BPX CONSULTING,-78.42,review,,trap_lookalike
+2025-02-01,valero  #71730,-61.21,auto,Fuel,fuel
+2025-02-24,BEST  BUY #67494 CA,-244.18,review,,trap_deny
+2025-05-11,AT&T *BILL PAYMENT,-64.67,auto,Phone & Data,phone
+2025-06-18,DOORDASH  DASHER PAYOUT,1243.91,auto,Platform Income,payout
+2025-05-18,AMAZON MKTPL CA,-21.54,review,,trap_deny
+2025-02-05,AUTOZONE #9008,-263.78,auto,Vehicle Maintenance,maintenance
+2025-04-15,TARGET #74734 FL,-99.7,review,,trap_deny
+2025-09-18,PAYPAL *XK29Q,-48.29,review,,trap_paypal
+2025-12-29,UBER *TRIP #38847 CA,-49.83,auto,Personal,personal
+2025-02-13,LYFT  INC EARNINGS,1226.65,auto,Platform Income,payout
+2025-04-17,FIRESTONE  COMPLETE AUTO TX,-83.47,auto,Vehicle Maintenance,maintenance
+2025-02-03,sunset barber 67459,-29.55,review,,trap_unknown
+2025-10-09,uber instant pay fee,-2.39,auto,Platform Fees,platform_fee
+2025-07-29,TRADER JOE S 72461,-13.42,auto,Personal,personal
+2025-12-19,CHEVRON #56550,-34.51,auto,Fuel,fuel
+2025-10-07,TRADER  JOE S 26910,-99.11,auto,Personal,personal
+2025-03-28,uber *eats 14054,-118.84,auto,Personal,personal
+2025-08-08,SHELL OIL #57221,-27.7,auto,Fuel,fuel
+2025-01-25,LYFT INC EARNINGS,902.44,auto,Platform Income,payout
+2025-01-20,arco,-20.41,auto,Fuel,fuel
+2025-06-29,BP 27745 CA,-86.7,auto,Fuel,fuel
+2025-03-24,KROGER 94649 FL,-78.21,auto,Personal,personal
+2025-01-24,BOBS  TIRE SHOP FL,-80.64,review,,trap_weak
+2025-10-19,ZELLE FROM SAM,44.06,review,,trap_unknown_credit
+2025-04-18,T-MOBILE,-66.45,auto,Phone & Data,phone
+2025-08-14,SAFEWAY,-9.25,auto,Personal,personal
+2025-06-19,UBER TIPS PAYOUT,83.39,auto,Tips & Bonuses,tips
+2025-10-10,CIRCLE K #62638 WA,-47.08,auto,Fuel,fuel
+2025-04-17,BEST BUY #15465 CA,-84.13,review,,trap_deny
+2025-11-03,UBER  BV,-15.28,review,,trap_uber
+2025-06-22,sunoco 77973,-83.14,auto,Fuel,fuel
+2025-08-07,BOBS TIRE SHOP,-68.18,review,,trap_weak
+2025-05-03,SUNOCO #77225,-24.18,auto,Fuel,fuel
+2025-02-07,BEST BUY,-172.86,review,,trap_deny
+2025-05-02,SQ  *JOES CAR WASH,-23.87,auto,Vehicle Maintenance,car_wash
+2025-06-13,UBER *TRIP,-11.2,auto,Personal,personal
+2025-09-21,UBER  *EATS #33528,-12.27,auto,Personal,personal
+2025-02-12,sq *downtown car wash,-19.8,auto,Vehicle Maintenance,car_wash
+2025-03-16,SHELL OIL,-76.15,auto,Fuel,fuel
+2025-09-13,chevron 12514 il,-73.2,auto,Fuel,fuel
+2025-09-05,CHEVRON 79629 CA,-74.49,auto,Fuel,fuel
+2025-09-05,CHEVRON 79629 CA,-74.49,excluded,,trap_duplicate
+2025-01-23,TRANSFER  FROM SAVINGS,-498.35,excluded,Transfer,transfer
+2025-11-07,UBER  TIPS PAYOUT,52.57,auto,Tips & Bonuses,tips
+2025-12-12,KROGER FUEL CENTER 70489 WA,-54.12,review,,trap_conflict
+2025-01-30,LYFT DRIVER PAYOUT,768.66,auto,Platform Income,payout
+2025-12-13,SHELLYS SEAFOOD,-27.6,review,,trap_lookalike
+2025-04-11,CHEVRON  TX,-65.7,auto,Fuel,fuel
+2025-11-13,EXXONMOBIL 88050,-135.46,review,,trap_big_gas
+2025-03-01,SHELL OIL,-128.15,review,,trap_big_gas
+2025-08-28,TRANSFER TO SAVINGS,-397.68,excluded,Transfer,transfer
+2025-03-31,valero #90113 wa,-51.49,auto,Fuel,fuel
+2025-12-22,LYFT EXPRESS PAY FEE,-0.75,auto,Platform Fees,platform_fee
+2025-03-11,PARKMOBILE #37983 WA,-19.83,auto,Tolls & Parking,tolls
+2025-07-07,LUCKY CAFE 54260,-13.53,review,,trap_unknown
+2025-03-07,UBER *TRIP CA,-109.67,auto,Personal,personal
+2025-12-19,GEICO AUTO,-126.43,auto,Vehicle Insurance,insurance
+2025-01-04,UBER *EATS 9565,-9.02,auto,Personal,personal
+2025-04-29,PP*7741CODE,-75.15,review,,trap_paypal
+2025-06-08,uber  one membership,-18.64,review,,trap_uber
+2025-07-30,PP*7741CODE,-76.2,review,,trap_paypal
+2025-02-13,doordash dasher payout,1155.56,auto,Platform Income,payout
+2025-09-27,PROGRESSIVE INS,-132.67,auto,Vehicle Insurance,insurance
+2025-10-28,t-mobile,-93.51,auto,Phone & Data,phone
+2025-05-06,DOWNTOWN PARKING GARAGE #10679,-10.97,auto,Tolls & Parking,tolls
+2025-05-11,STARBUCKS STORE IL,-58.88,auto,Personal,personal
+2025-03-20,EXXONMOBIL #57448 FL,-32.85,auto,Fuel,fuel
+2025-12-18,SUNSET DINER CA,-26.89,review,,trap_unknown
+2025-02-25,UBER ONE MEMBERSHIP,-10.02,review,,trap_uber
+2025-04-04,E-ZPASS REPLENISH 56984,-14.66,auto,Tolls & Parking,tolls
+2025-05-06,BEST BUY CA,-229.04,review,,trap_deny
+2025-03-11,BPX CONSULTING,-83.97,review,,trap_lookalike
+2025-03-16,sq  *downtown car wash,-29.05,auto,Vehicle Maintenance,car_wash
+2025-04-20,DOORDASH DASHER PAYOUT,871.52,auto,Platform Income,payout
+2025-06-10,MOBILE  DEPOSIT,274.83,review,,trap_unknown_credit
+2025-07-17,DOORDASH DASHER PAYOUT,768.0,auto,Platform Income,payout
+2025-02-12,UBER TIPS PAYOUT,48.08,auto,Tips & Bonuses,tips
+2025-01-28,UBER TECHNOLOGIES PAYOUT,775.43,auto,Platform Income,payout
+2025-03-16,LYFT DRIVER PAYOUT,1392.18,auto,Platform Income,payout
+2025-05-01,amazon mktpl #43315 fl,-205.65,review,,trap_deny
+2025-12-30,UBER INSTANT PAY FEE,-1.26,auto,Platform Fees,platform_fee
+2025-07-23,NETFLIX.COM #88696,-90.89,auto,Personal,personal
+2025-04-29,AMAZON MKTPL #331 NY,-193.77,review,,trap_deny
+2025-09-11,UBER TECHNOLOGIES PAYOUT,806.4,auto,Platform Income,payout
+2025-04-03,VENMO CASHOUT,262.75,review,,trap_unknown_credit
+2025-03-10,LYFT INC EARNINGS,1365.55,auto,Platform Income,payout
+2025-11-13,UBER ONE MEMBERSHIP,-24.8,review,,trap_uber
+2025-03-01,UBER TECHNOLOGIES PAYOUT,658.33,auto,Platform Income,payout
+2025-10-02,sq *big sky car wash,-19.76,auto,Vehicle Maintenance,car_wash
+2025-01-16,uber bv,-6.01,review,,trap_uber
+2025-07-08,O REILLY AUTO PARTS #9204 WA,-51.05,auto,Vehicle Maintenance,maintenance
+2025-06-13,EXXONMOBIL #84810,-52.51,auto,Fuel,fuel
+2025-05-30,EXXONMOBIL  #28722 WA,-161.0,review,,trap_big_gas
+2025-08-24,VERIZON WRLS,-100.46,auto,Phone & Data,phone
+2025-05-02,e-zpass replenish 1750 fl,-32.57,auto,Tolls & Parking,tolls
+2025-02-04,CHIPOTLE #13173,-24.82,auto,Personal,personal
+2025-10-09,quick gas n go #67197,-64.11,review,,trap_weak
+2025-03-19,JOES CAFE #39946,-41.57,review,,trap_unknown
+2025-06-17,BOBS TIRE SHOP #16217,-72.91,review,,trap_weak
+2025-02-09,PAYPAL *XK29Q,-52.39,review,,trap_paypal
+2025-07-25,UBERTI FURNITURE,-25.55,review,,trap_lookalike
+2025-10-30,VERIZON WRLS,-100.36,auto,Phone & Data,phone
+2025-01-22,E-ZPASS REPLENISH,-36.31,auto,Tolls & Parking,tolls
+2025-06-13,LYFT DRIVER PAYOUT,953.14,auto,Platform Income,payout
+2025-01-19,SHELL OIL FL,-45.61,auto,Fuel,fuel
+2025-03-12,NOVA CARD AUTOPAY,-249.42,excluded,Card Payment,card_payment
+2025-09-26,LYFT INC EARNINGS,1004.37,auto,Platform Income,payout
+2025-05-01,BIG SKY BARBER 1056,-51.87,review,,trap_unknown
+2025-11-24,KROGER FUEL CENTER #68705,-61.88,review,,trap_conflict
+2025-08-12,VERIZON WRLS,-97.98,auto,Phone & Data,phone
+2025-04-04,CIRCLE K #93209,-48.94,auto,Fuel,fuel
+2025-10-19,BP #9905 NY,-83.23,auto,Fuel,fuel
+2025-12-19,firestone complete auto ca,-150.63,auto,Vehicle Maintenance,maintenance
+2025-08-31,PARKMOBILE FL,-34.8,auto,Tolls & Parking,tolls
+2025-07-06,NOVA CARD AUTOPAY,-575.33,excluded,Card Payment,card_payment
+2025-07-14,SPEEDWAY 41249,-53.11,auto,Fuel,fuel
+2025-01-29,KROGER 15981 NY,-26.36,auto,Personal,personal
+2025-10-24,UBER *PENDING,-17.14,review,,trap_uber
+2025-08-17,STARBUCKS STORE #44878 CA,-99.51,auto,Personal,personal
+2025-03-03,EXXONMOBIL 8020 TX,-118.53,review,,trap_big_gas
+2025-01-04,CIRCLE K #75254,-39.11,auto,Fuel,fuel
+2025-01-23,TRADER JOE S,-82.61,auto,Personal,personal
+2025-12-31,E-ZPASS  REPLENISH,-15.58,auto,Tolls & Parking,tolls
+2025-10-01,SHELL OIL,-175.62,review,,trap_big_gas
+2025-02-25,LYFT  BONUS PAYOUT,77.83,auto,Tips & Bonuses,tips
+2025-10-16,UBER TECHNOLOGIES PAYOUT,355.77,auto,Platform Income,payout
+2025-10-27,SQ *MARIAS CAR WASH,-24.82,auto,Vehicle Maintenance,car_wash
+2025-04-01,NETFLIX.COM  #67150 WA,-32.97,auto,Personal,personal
+2025-01-04,UBER *PENDING,-18.74,review,,trap_uber
+2025-01-29,JIFFY LUBE RETURN,18.4,auto,Refund,refund
+2025-01-12,UBER QUEST BONUS,86.22,auto,Tips & Bonuses,tips
+2025-06-17,O REILLY AUTO PARTS 30340,-20.35,auto,Vehicle Maintenance,maintenance
+2025-08-16,TRANSFER  TO SAVINGS,-317.75,excluded,Transfer,transfer
+2025-05-06,BEST  BUY 65257 TX,-28.2,review,,trap_deny
+2025-06-05,CITY  OF AUSTIN PARKING 4990,-36.3,auto,Tolls & Parking,tolls
+2025-06-16,ATM  FEE,-6.1,auto,Bank Fees,bank_fee
+2025-08-10,UBER TIPS PAYOUT,100.56,auto,Tips & Bonuses,tips
+2025-12-22,UBER *EATS #92158,-103.36,auto,Personal,personal
+2025-08-03,uber technologies payout,1279.98,auto,Platform Income,payout
+2025-08-18,PAYPAL *XK29Q,-27.08,review,,trap_paypal
+2025-07-09,BPX  CONSULTING,-57.05,review,,trap_lookalike
+2025-06-16,KROGER FUEL CENTER 49119 TX,-22.57,review,,trap_conflict
+2025-07-03,doordash inc payment,1202.32,auto,Platform Income,payout
+2025-02-11,NOVA CARD AUTOPAY,-238.96,excluded,Card Payment,card_payment
+2025-07-07,VALERO,-90.12,auto,Fuel,fuel
+2025-01-30,KROGER FUEL CENTER WA,-54.39,review,,trap_conflict
+2025-03-10,uber technologies payout,784.35,auto,Platform Income,payout
+2025-04-01,COSTCO WHSE #9080 TX,-18.38,review,,trap_deny
+2025-05-25,DOWNTOWN BARBER,-12.03,review,,trap_unknown
+2025-04-02,kroger 11330 ca,-61.66,auto,Personal,personal
+2025-09-24,doordash inc payment,571.4,auto,Platform Income,payout
+2025-07-10,DOORDASH DASHER PAYOUT,1351.21,auto,Platform Income,payout
+2025-07-16,bpx consulting,-47.5,review,,trap_lookalike
+2025-08-03,JIFFY  LUBE RETURN,35.38,auto,Refund,refund
+2025-02-15,UBER *TRIP 71322 TX,-95.27,auto,Personal,personal
+2025-09-08,PAYPAL  *XK29Q,-78.26,review,,trap_paypal
+2025-05-22,SHELL OIL REFUND,24.53,auto,Refund,refund
+2025-10-15,RIVERSIDE  CAFE WA,-9.27,review,,trap_unknown
+2025-06-10,phone charger kiosk 40783,-66.28,review,,trap_weak
+2025-09-02,KROGER FUEL CENTER 88383,-57.11,review,,trap_conflict
+2025-05-31,CIRCLE K #3545 CA,-83.87,auto,Fuel,fuel
+2025-10-03,TRANSFER FROM SAVINGS,-681.7,excluded,Transfer,transfer
+2025-09-23,ONLINE TRANSFER TO SAVINGS,-300.9,excluded,Transfer,transfer
+2025-08-07,SQ *SUNSET CAR WASH,-25.86,auto,Vehicle Maintenance,car_wash
+2025-08-15,JIFFY  LUBE,-223.13,auto,Vehicle Maintenance,maintenance
+2025-04-10,CIRCLE  K,-93.9,auto,Fuel,fuel
+2025-03-12,uberti furniture,-13.38,review,,trap_lookalike
+2025-01-09,SHELL OIL 19405,-72.94,auto,Fuel,fuel
+2025-01-28,VENMO  CASHOUT,117.06,review,,trap_unknown_credit
+2025-04-25,CIRCLE K 89162 WA,-89.77,auto,Fuel,fuel
+2025-12-02,jiffy lube #35711,-160.28,auto,Vehicle Maintenance,maintenance
+2025-08-20,CREDIT  CARD PAYMENT NOVA CARD,-220.12,excluded,Card Payment,card_payment
+2025-02-17,PAYPAL *ZZ881,-60.41,review,,trap_paypal
+2025-05-30,ARCO NY,-47.57,auto,Fuel,fuel
+2025-05-30,ARCO NY,-47.57,excluded,,trap_duplicate
+2025-03-13,DOWNTOWN PARKING GARAGE #4079,-31.02,auto,Tolls & Parking,tolls
+2025-01-03,PEP BOYS 36780,-252.19,auto,Vehicle Maintenance,maintenance
+2025-03-08,AMAZON MKTPL 78742,-12.4,review,,trap_deny
+2025-12-09,LYFT INC EARNINGS,936.76,auto,Platform Income,payout
+2025-10-03,CHEVRON #89059,-62.9,auto,Fuel,fuel
+2025-06-07,RIVERSIDE CAFE,-32.94,review,,trap_unknown
+2025-05-31,PP*7741CODE,-44.38,review,,trap_paypal
+2025-11-09,UBER  ONE MEMBERSHIP,-10.34,review,,trap_uber
+2025-10-13,KROGER 70908,-110.09,auto,Personal,personal
+2025-11-07,AUTOZONE #180 TX,-93.3,auto,Vehicle Maintenance,maintenance
+2025-12-24,UBER BV,-16.86,review,,trap_uber
+2025-11-04,LYFT EXPRESS PAY FEE,-2.26,auto,Platform Fees,platform_fee
+2025-12-17,LYFT INC EARNINGS,1297.15,auto,Platform Income,payout
+2025-03-21,CREDIT CARD PAYMENT NOVA CARD,-898.34,excluded,Card Payment,card_payment
+2025-03-19,DOORDASH  INC PAYMENT,354.78,auto,Platform Income,payout
+2025-11-30,UBER  *TRIP,-16.4,auto,Personal,personal
+2025-06-14,GREEN LEAF CAFE 4402,-20.86,review,,trap_unknown
+2025-03-31,O  REILLY AUTO PARTS,-305.49,auto,Vehicle Maintenance,maintenance
+2025-10-20,LUCKY DINER #97342,-24.1,review,,trap_unknown
+2025-08-02,UBER *TRIP,-93.6,auto,Personal,personal
+2025-01-26,CIRCLE  K,-26.77,auto,Fuel,fuel
+2025-05-31,JIFFY LUBE RETURN,54.2,auto,Refund,refund
+2025-07-22,UBER TECHNOLOGIES PAYOUT,867.92,auto,Platform Income,payout
+2025-02-16,SAFEWAY FUEL #41815,-65.38,review,,trap_conflict
+2025-08-16,UBER ONE MEMBERSHIP,-22.9,review,,trap_uber
+2025-08-17,BIG SKY BARBER 29408,-54.96,review,,trap_unknown
+2025-06-29,NOVA CARD AUTOPAY,-627.59,excluded,Card Payment,card_payment
+2025-10-27,MONTHLY SERVICE FEE,-4.25,auto,Bank Fees,bank_fee
+2025-10-27,MONTHLY SERVICE FEE,-4.25,excluded,,trap_duplicate
+2025-01-04,ONLINE TRANSFER TO SAVINGS,-149.69,excluded,Transfer,transfer
+2025-08-28,COSTCO WHSE #16935 NY,-59.53,review,,trap_deny
+2025-06-09,TARGET 25682 CA,-141.9,review,,trap_deny
+2025-03-14,O REILLY AUTO PARTS,-35.14,auto,Vehicle Maintenance,maintenance
+2025-02-23,GREEN LEAF BARBER #86193,-10.71,review,,trap_unknown
+2025-03-24,STARBUCKS STORE FL,-41.49,auto,Personal,personal
+2025-10-04,TRANSFER TO SAVINGS,-480.02,excluded,Transfer,transfer
+2025-01-26,UBER *TRIP,-114.16,auto,Personal,personal
+2025-12-26,SHELL OIL,-173.18,review,,trap_big_gas
+2025-10-18,DOWNTOWN PARKING GARAGE,-18.09,auto,Tolls & Parking,tolls
+2025-01-14,fastrak  #41250,-22.38,auto,Tolls & Parking,tolls
+2025-07-03,mobile deposit,119.71,review,,trap_unknown_credit
+2025-04-21,mobile deposit,171.68,review,,trap_unknown_credit
+2025-12-09,bp #21361,-77.55,auto,Fuel,fuel
+2025-08-19,spothero 5457,-27.07,auto,Tolls & Parking,tolls
+2025-04-07,UBER ONE MEMBERSHIP,-23.88,review,,trap_uber
+2025-04-15,SQ *JOES CAR WASH,-12.53,auto,Vehicle Maintenance,car_wash
+2025-11-16,walmart supercenter 35523,-38.52,review,,trap_deny
+2025-02-10,ZELLE FROM SAM,45.84,review,,trap_unknown_credit
+2025-11-25,BP,-66.89,auto,Fuel,fuel
+2025-02-06,T-MOBILE,-58.87,auto,Phone & Data,phone
+2025-04-23,BPX CONSULTING,-87.91,review,,trap_lookalike
+2025-04-14,SPEEDWAY #45696,-77.07,auto,Fuel,fuel
+2025-03-01,SQ *MARIAS CAR WASH,-9.47,auto,Vehicle Maintenance,car_wash
+2025-06-03,T-MOBILE,-108.82,auto,Phone & Data,phone
+2025-10-01,VALVOLINE INSTANT OIL #73499 IL,-249.24,auto,Vehicle Maintenance,maintenance
+2025-02-23,big sky cafe #75615 wa,-28.04,review,,trap_unknown
+2025-11-20,WALMART  SUPERCENTER #8072,-79.95,review,,trap_deny
+2025-07-04,O REILLY AUTO PARTS,-233.76,auto,Vehicle Maintenance,maintenance
+2025-10-27,PAYPAL *ZZ881,-78.55,review,,trap_paypal
+2025-07-28,transfer  from savings,-592.61,excluded,Transfer,transfer
+2025-11-18,sq *lucky car wash,-20.21,auto,Vehicle Maintenance,car_wash
+2025-06-01,ZELLE FROM SAM,126.9,review,,trap_unknown_credit
+2025-05-17,SHELL OIL,-218.48,review,,trap_big_gas
+2025-04-19,CHEVRON #89793 FL,-181.53,review,,trap_big_gas
+2025-11-29,RIVERSIDE BARBER WA,-44.0,review,,trap_unknown
+2025-11-29,RIVERSIDE BARBER WA,-44.0,excluded,,trap_duplicate
+2025-07-18,ONLINE TRANSFER TO SAVINGS,-378.12,excluded,Transfer,transfer
+2025-05-19,UBER TECHNOLOGIES PAYOUT,620.08,auto,Platform Income,payout
+2025-02-11,PEP  BOYS #58182 NY,-47.83,auto,Vehicle Maintenance,maintenance
+2025-11-19,NOVA CARD AUTOPAY,-688.45,excluded,Card Payment,card_payment
+2025-12-26,BP 76764,-48.71,auto,Fuel,fuel
+2025-11-29,SQ *RIVERSIDE CAR WASH,-8.14,auto,Vehicle Maintenance,car_wash
+2025-07-13,TRANSFER FROM SAVINGS,-620.64,excluded,Transfer,transfer
+2025-06-17,TRADER JOE S #62101,-33.97,auto,Personal,personal
+2025-11-01,transfer  to savings,-334.87,excluded,Transfer,transfer
+2025-04-07,VALVOLINE  INSTANT OIL 28961,-128.49,auto,Vehicle Maintenance,maintenance
+2025-03-23,doordash  fee,-1.92,auto,Platform Fees,platform_fee
+2025-02-25,TARGET TX,-232.77,review,,trap_deny
+2025-07-13,BPX CONSULTING,-37.86,review,,trap_lookalike
+2025-11-10,LYFT DRIVER PAYOUT,436.43,auto,Platform Income,payout
+2025-10-04,SUNOCO  FL,-21.73,auto,Fuel,fuel
+2025-06-28,CHEVRON 56920,-195.34,review,,trap_big_gas
+2025-09-07,UBER ONE MEMBERSHIP,-19.8,review,,trap_uber
+2025-11-26,phone charger kiosk #23184 il,-23.35,review,,trap_weak
+2025-05-03,SQ *GREEN LEAF CAR WASH,-21.37,auto,Vehicle Maintenance,car_wash
+2025-02-10,DOORDASH INC PAYMENT,335.38,auto,Platform Income,payout
+2025-05-25,BEST  BUY,-103.23,review,,trap_deny
+2025-05-25,BEST  BUY,-103.23,excluded,,trap_duplicate
+2025-07-12,BPX CONSULTING,-13.49,review,,trap_lookalike
+2025-04-10,CREDIT CARD PAYMENT NOVA CARD,-698.84,excluded,Card Payment,card_payment
+2025-05-30,AUTOZONE REFUND,19.85,auto,Refund,refund
+2025-05-30,AUTOZONE REFUND,19.85,excluded,,trap_duplicate
+2025-08-01,PHONE CHARGER KIOSK 62859,-72.36,review,,trap_weak
+2025-03-06,WALMART SUPERCENTER FL,-189.06,review,,trap_deny
+2025-11-02,CHEVRON,-140.94,review,,trap_big_gas
+2025-09-03,T-MOBILE,-98.86,auto,Phone & Data,phone
+2025-07-14,lyft driver payout,635.11,auto,Platform Income,payout
+2025-08-01,JIFFY  LUBE RETURN,53.43,auto,Refund,refund
+2025-07-13,PHONE CHARGER KIOSK 626,-51.54,review,,trap_weak
+2025-11-09,doordash  inc payment,590.35,auto,Platform Income,payout
+2025-01-11,AT&T  *BILL PAYMENT,-45.97,auto,Phone & Data,phone
+2025-09-17,UBERTI FURNITURE,-19.23,review,,trap_lookalike
+2025-03-03,doordash fee,-1.36,auto,Platform Fees,platform_fee
+2025-10-05,JOES BARBER #20033,-46.55,review,,trap_unknown

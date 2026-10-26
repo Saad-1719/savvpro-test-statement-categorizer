@@ -1,0 +1,50 @@
+# The category taxonomy (SRS section 3). tax_line is the line on the tax form named in tax_form.yaml.
+- name: Platform Income
+  kind: income
+  tax_line: "1"
+  tax_line_label: Gross receipts
+- name: Tips & Bonuses
+  kind: income
+  tax_line: "1"
+  tax_line_label: Gross receipts
+- name: Fuel
+  kind: expense
+  tax_line: "9"
+  tax_line_label: Car and truck expenses
+- name: Vehicle Maintenance
+  kind: expense
+  tax_line: "9"
+  tax_line_label: Car and truck expenses
+- name: Tolls & Parking
+  kind: expense
+  tax_line: "9"
+  tax_line_label: Car and truck expenses
+- name: Vehicle Insurance
+  kind: expense
+  tax_line: "9"
+  tax_line_label: Car and truck expenses
+- name: Platform Fees
+  kind: expense
+  tax_line: "10"
+  tax_line_label: Commissions and fees
+- name: Phone & Data
+  kind: expense
+  tax_line: "25"
+  tax_line_label: Utilities (business share)
+  mixed_use: true
+- name: Supplies
+  kind: expense
+  tax_line: "22"
+  tax_line_label: Supplies
+- name: Bank Fees
+  kind: expense
+  tax_line: "27a"
+  tax_line_label: Other expenses
+- name: Refund
+  kind: contra
+- name: Personal
+  kind: personal
+- name: Transfer
+  kind: excluded
+- name: Card Payment
+  kind: excluded

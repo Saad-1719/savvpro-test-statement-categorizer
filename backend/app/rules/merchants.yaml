@@ -1,0 +1,119 @@
+# Layer 2: merchant dictionary. Matched against the cleaned merchant key.
+# Inside the layer: exact > prefix > regex > contains, then the longer pattern, then file order.
+# Only the winning rule produces evidence.
+
+# --- Platforms: income (credits) ---
+- id: merchant.platform_tips
+  match: regex
+  pattern: "^(UBER|DOORDASH|LYFT|GRUBHUB|INSTACART)\\b.*\\b(TIP|TIPS|BONUS|INCENTIVE|QUEST|PROMO)\\b"
+  reason: "Platform tip or bonus payout"
+  category: Tips & Bonuses
+  sign: credit
+  priority: 10  # "UBER TIPS PAYOUT" is a tip, not a plain payout
+- id: merchant.platform_payout
+  match: regex
+  pattern: "^(UBER|DOORDASH|LYFT|GRUBHUB|INSTACART)\\b.*\\b(PAYOUT|PAYMENT|EARNINGS|DEPOSIT|DASHER|DRIVER|INSTANT PAY)\\b"
+  reason: "Platform payout"
+  category: Platform Income
+  sign: credit
+
+# --- Platforms: debits ---
+- id: merchant.uber_trip
+  match: prefix
+  pattern: "UBER *TRIP"
+  category: Personal
+  sign: debit
+- id: merchant.uber_eats
+  match: prefix
+  pattern: "UBER *EATS"
+  category: Personal
+  sign: debit
+- id: merchant.platform_fee
+  match: regex
+  pattern: "^(UBER|DOORDASH|LYFT|GRUBHUB|INSTACART)\\b.*\\bFEES?\\b"
+  reason: "Fee charged by the platform"
+  category: Platform Fees
+  sign: debit
+- id: merchant.doordash_order
+  match: prefix
+  pattern: "DOORDASH *"
+  category: Personal
+  sign: debit
+- id: merchant.uber_ambiguous
+  match: regex
+  pattern: "^UBER\\b"
+  action: review
+  reason: "Uber charge with no ride or eats marker"
+  sign: debit
+- id: merchant.doordash_ambiguous
+  match: regex
+  pattern: "^DOORDASH\\b"
+  action: review
+  reason: "DoorDash charge that is neither a fee nor a food order"
+  sign: debit
+
+# --- Fuel (large purchases may include store items) ---
+- {id: merchant.shell, match: prefix, pattern: "SHELL", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.chevron, match: prefix, pattern: "CHEVRON", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.exxonmobil, match: prefix, pattern: "EXXONMOBIL", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.exxon, match: prefix, pattern: "EXXON", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.mobil, match: prefix, pattern: "MOBIL", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.bp, match: prefix, pattern: "BP", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.arco, match: prefix, pattern: "ARCO", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.valero, match: prefix, pattern: "VALERO", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.sunoco, match: prefix, pattern: "SUNOCO", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.citgo, match: prefix, pattern: "CITGO", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.speedway, match: prefix, pattern: "SPEEDWAY", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.marathon, match: prefix, pattern: "MARATHON PETRO", category: Fuel, sign: debit, max_amount: 100}
+- {id: merchant.circle_k, match: prefix, pattern: "CIRCLE K", category: Fuel, sign: debit, max_amount: 100}
+
+# --- Vehicle maintenance ---
+- {id: merchant.jiffy_lube, match: prefix, pattern: "JIFFY LUBE", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.autozone, match: prefix, pattern: "AUTOZONE", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.oreilly, match: prefix, pattern: "O REILLY AUTO", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.oreilly_apos, match: prefix, pattern: "O'REILLY AUTO", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.advance_auto, match: prefix, pattern: "ADVANCE AUTO", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.pep_boys, match: prefix, pattern: "PEP BOYS", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.firestone, match: prefix, pattern: "FIRESTONE", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.valvoline, match: prefix, pattern: "VALVOLINE", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.midas, match: prefix, pattern: "MIDAS", category: Vehicle Maintenance, sign: debit}
+- {id: merchant.discount_tire, match: prefix, pattern: "DISCOUNT TIRE", category: Vehicle Maintenance, sign: debit}
+
+# --- Tolls & parking ---
+- {id: merchant.ezpass, match: prefix, pattern: "E-ZPASS", category: Tolls & Parking, sign: debit}
+- {id: merchant.ezpass_nodash, match: prefix, pattern: "EZPASS", category: Tolls & Parking, sign: debit}
+- {id: merchant.fastrak, match: prefix, pattern: "FASTRAK", category: Tolls & Parking, sign: debit}
+- {id: merchant.sunpass, match: prefix, pattern: "SUNPASS", category: Tolls & Parking, sign: debit}
+- {id: merchant.txtag, match: prefix, pattern: "TXTAG", category: Tolls & Parking, sign: debit}
+- {id: merchant.parkmobile, match: prefix, pattern: "PARKMOBILE", category: Tolls & Parking, sign: debit}
+- {id: merchant.spothero, match: prefix, pattern: "SPOTHERO", category: Tolls & Parking, sign: debit}
+
+# --- Insurance ---
+- {id: merchant.geico, match: prefix, pattern: "GEICO", category: Vehicle Insurance, sign: debit}
+- {id: merchant.progressive, match: prefix, pattern: "PROGRESSIVE", category: Vehicle Insurance, sign: debit}
+- {id: merchant.state_farm, match: prefix, pattern: "STATE FARM", category: Vehicle Insurance, sign: debit}
+- {id: merchant.allstate, match: prefix, pattern: "ALLSTATE", category: Vehicle Insurance, sign: debit}
+
+# --- Phone & data (mixed use: needs a business %) ---
+- {id: merchant.verizon, match: prefix, pattern: "VERIZON", category: Phone & Data, sign: debit}
+- {id: merchant.vzwrlss, match: prefix, pattern: "VZWRLSS", category: Phone & Data, sign: debit}
+- {id: merchant.tmobile, match: prefix, pattern: "T-MOBILE", category: Phone & Data, sign: debit}
+- {id: merchant.tmobile_nodash, match: prefix, pattern: "TMOBILE", category: Phone & Data, sign: debit}
+- {id: merchant.att, match: prefix, pattern: "AT&T", category: Phone & Data, sign: debit}
+- {id: merchant.att_star, match: prefix, pattern: "ATT *", category: Phone & Data, sign: debit}
+- {id: merchant.mint_mobile, match: prefix, pattern: "MINT MOBILE", category: Phone & Data, sign: debit}
+
+# --- Personal (not deductible) ---
+- {id: merchant.safeway, match: prefix, pattern: "SAFEWAY", category: Personal, sign: debit}
+- {id: merchant.kroger, match: prefix, pattern: "KROGER", category: Personal, sign: debit}
+- {id: merchant.whole_foods, match: prefix, pattern: "WHOLE FOODS", category: Personal, sign: debit}
+- {id: merchant.trader_joes, match: prefix, pattern: "TRADER JOE", category: Personal, sign: debit}
+- {id: merchant.publix, match: prefix, pattern: "PUBLIX", category: Personal, sign: debit}
+- {id: merchant.aldi, match: prefix, pattern: "ALDI", category: Personal, sign: debit}
+- {id: merchant.heb, match: prefix, pattern: "H-E-B", category: Personal, sign: debit}
+- {id: merchant.netflix, match: prefix, pattern: "NETFLIX", category: Personal, sign: debit}
+- {id: merchant.spotify, match: prefix, pattern: "SPOTIFY", category: Personal, sign: debit}
+- {id: merchant.chipotle, match: prefix, pattern: "CHIPOTLE", category: Personal, sign: debit}
+- {id: merchant.mcdonalds, match: prefix, pattern: "MCDONALD'S", category: Personal, sign: debit}
+- {id: merchant.starbucks, match: prefix, pattern: "STARBUCKS", category: Personal, sign: debit}
+- {id: merchant.planet_fitness, match: prefix, pattern: "PLANET FITNESS", category: Personal, sign: debit}
