@@ -86,6 +86,17 @@ export function updateTransaction(
   return callApi(`/api/sessions/${sessionId}/transactions/${transactionId}`, withJsonBody("PATCH", changes));
 }
 
+// Changes several rows at once (e.g. a whole Needs Review group). The backend applies all of them or none,
+// so a failure never leaves a group half-fixed.
+export function updateTransactions(
+  sessionId: string,
+  transactionIds: string[],
+  changes: { category?: string; business_pct?: number },
+): Promise<Row[]> {
+  const body = { transaction_ids: transactionIds, ...changes };
+  return callApi(`/api/sessions/${sessionId}/transactions`, withJsonBody("PATCH", body));
+}
+
 // "Always categorize MERCHANT as CATEGORY". The backend also updates the rows already uploaded.
 export function saveAlwaysRule(sessionId: string, merchantKey: string, category: string): Promise<UserRule> {
   const body = { merchant_key: merchantKey, category: category, apply_to_existing: true };

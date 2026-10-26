@@ -1,0 +1,16 @@
+# Used by `docker build -f frontend/Dockerfile .` (BuildKit reads <Dockerfile>.dockerignore).
+# The context is the repo root, so keep it small and keep secrets out.
+.git
+**/node_modules
+**/.next
+**/.venv
+**/__pycache__
+backend
+docs
+frontend/test-results
+frontend/playwright-report
+frontend/tsconfig.tsbuildinfo
+**/.env
+**/.env.*
+!**/.env.example
+**/*.real.csv

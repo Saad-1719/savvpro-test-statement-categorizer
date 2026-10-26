@@ -37,3 +37,8 @@ next-env.d.ts
 
 # sample CSVs copied from ../sample_data by scripts/copy-samples.mjs
 /public/samples/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/

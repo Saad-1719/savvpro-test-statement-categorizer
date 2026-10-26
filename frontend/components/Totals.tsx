@@ -38,7 +38,7 @@ export function Totals({ summary, exportUrl }: { summary: Summary; exportUrl: st
         )}
 
         {showTaxForm && (
-          <div role="tablist" className="grid grid-cols-2 rounded-lg bg-slate-100 p-1 text-sm">
+          <div role="group" aria-label="Show totals" className="grid grid-cols-2 rounded-lg bg-slate-100 p-1 text-sm">
             <ViewTab label="By category" isActive={view === "categories"} onClick={() => setView("categories")} />
             <ViewTab label="By tax-form line" isActive={view === "tax_form"} onClick={() => setView("tax_form")} />
           </div>
@@ -115,8 +115,7 @@ function ViewTab({ label, isActive, onClick }: { label: string; isActive: boolea
   return (
     <button
       type="button"
-      role="tab"
-      aria-selected={isActive}
+      aria-pressed={isActive}
       onClick={onClick}
       className={"rounded-md px-2 py-1 font-medium " + (isActive ? "bg-white text-slate-900 shadow-sm" : "text-slate-600")}
     >

@@ -7,13 +7,7 @@ import { CategorySelect } from "./CategorySelect";
 import { AlertIcon, CheckIcon } from "./icons";
 import { isMixedUse, money } from "@/lib/format";
 import type { Category, ReviewGroup } from "@/lib/types";
-
-// What the user chose for a group.
-export interface GroupFix {
-  category: string;
-  always: boolean; // also save a rule for this merchant
-  businessPct?: number; // only for mixed-use categories like Phone & Data
-}
+import type { GroupFix } from "@/lib/useStatementSession";
 
 interface Props {
   groups: ReviewGroup[];

@@ -1,7 +1,8 @@
 "use client";
 
-// Tabs above the table: All, Needs Review, Auto, Excluded, each with its row count.
-// Clicking a tab filters the table to that status.
+// Filter buttons above the table: All, Needs Review, Auto, Excluded, each with its row count.
+// Clicking one filters the table to that status. They are toggle buttons (aria-pressed),
+// so they work with Tab and Enter/Space like any other button.
 
 import { STATUS_LABELS } from "@/lib/format";
 import type { Row, Status } from "@/lib/types";
@@ -26,7 +27,7 @@ export function StatusBar({ rows, active, onSelect }: Props) {
   }
 
   return (
-    <div role="tablist" aria-label="Filter by status" className="inline-flex flex-wrap rounded-lg bg-slate-100 p-1">
+    <div role="group" aria-label="Filter by status" className="inline-flex flex-wrap rounded-lg bg-slate-100 p-1">
       <Tab label="All" count={rows.length} isActive={active === "all"} onClick={() => onSelect("all")} />
       {STATUSES.map((status) => (
         <Tab
@@ -54,15 +55,14 @@ function Tab({ label, count, isActive, dotColor, onClick }: TabProps) {
   return (
     <button
       type="button"
-      role="tab"
-      aria-selected={isActive}
+      aria-pressed={isActive}
       onClick={onClick}
       className={
         "flex items-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium " +
         (isActive ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900")
       }
     >
-      {dotColor && <span className={"h-2 w-2 rounded-full " + dotColor} />}
+      {dotColor && <span aria-hidden="true" className={"h-2 w-2 rounded-full " + dotColor} />}
       {label}
       <span className="tabular-nums text-slate-400">{count}</span>
     </button>
